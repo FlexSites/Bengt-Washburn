@@ -1,0 +1,68 @@
+
+<header>
+    <div>
+        <a href="/" id="logo">Comedian<br /><img src="/img/logo.gif" /></a>
+        <div id="headerLinks" class="no-tablet">
+            <a href="#" id="sirius"></a><a href="http://www.comedycentral.com/comedians/bengt-washburn" target="_blank" id="comedycentral"></a><a href="#" id="craigferguson"></a><a href="http://teamcoco.com/video/bengt-washburn-04-15-13" target="_blank" id="sanfrancomedy"></a>
+        </div>
+        <div id="signup">
+            Download Free Comedy<br/><a href="/signup" class="ajax">Sign-Up!</a>
+        </div>
+    </div>
+    <nav id="mainNav">
+        <span><a href="#menu" id="menuBtn" class="icon-menu"></a></span><span class="no-pl"><?php if (isset($a)) echo '<a href="/" class="no-pl">'; ?>Home<?php if (isset($a)) echo '</a>'; ?></span><span><?php if ($a != 'bio') echo '<a href="/bio">'; ?>Who's Bengt<?php if ($a != 'bio') echo '</a>'; ?></span><span><?php if ($a != 'shows') echo '<a href="/shows">'; ?>Shows<?php if ($a != 'shows') echo '</a>'; ?></span><span><?php if ($a != 'contact') echo '<a href="/contact">'; ?>Contact<?php if ($a != 'contact') echo '</a>'; ?></span><span><?php if ($a != 'resume') echo '<a href="/resume">'; ?>Resume<?php if ($a != 'resume') echo '</a>'; ?></span><span class="dropdown"><?php if ($a != 'media') echo '<a href="/media">'; ?>Media<?php if ($a != 'media') echo '</a>'; ?><div class="subMenu"><a href="/videos">Videos</a><a href="/blog/1">Writings</a><a href="/media/Press-Kit.zip">EPK</a></div></span><span class="no-pr"><?php if ($a != 'store') echo '<a href="/store">'; ?>Store<?php if ($a != 'store') echo '</a>'; ?></span>
+    </nav>
+
+</header>
+
+<div id="bodyContent">
+    <section id="hero" class="mb">
+        <!-- ADD HEROS -->
+    </section>
+
+[[$content]]
+  <h1>Page not found</h1>
+  <p>[[errorMessage]]</p>
+[[/content]]
+
+</div>
+
+<footer>
+    <div class="fl">
+        &copy; 2013 Bengt Washburn
+        <br />
+        <a href="mailto:me@sethtippetts.com" style="font-size: 10px;" target="_blank">Development by Seth Tippetts</a>
+    </div>
+    <div id="social">
+        <a href="http://www.facebook.com/bengtwashburn" target="_blank" class="icon-facebook"></a>
+        <a href="http://www.twitter.com/bengtwashburn" target="_blank" class="icon-twitter"></a>
+    </div>
+</footer>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/global.js" defer async></script>
+<script src="/js/fancybox.js" defer async></script>
+<script>
+    var $ = '';
+    $(function(){
+        $('body').on('click.youtube','a.youtube',function(){
+            // if(view!='mobile'){
+                var url = $(this).attr('href');
+                $.fancybox.open({
+                    href:'http://www.youtube.com/v/'+url.match(/(\?v=|\/\d\/|\/embed\/|\/v\/|\.be\/)([a-zA-Z0-9\-\_]+)/)[2]+'?autohide=1&autoplay=1&modestbranding=1&rel=0&theme=light&version=3',
+                    type:'iframe',
+                    scrolling:'no',
+                    width:650,
+                    height:360
+                })
+                return false;
+            // }
+        });
+        $('img[data-src]').each(function(){
+            $(this).attr('src',$(this).attr('data-src'));
+        });
+        $('#menuBtn').click(function(){
+            $('#mainNav').toggleClass('show');
+        });
+    });
+</script>
